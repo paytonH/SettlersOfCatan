@@ -15,3 +15,5 @@ public class Board {
       hexes[i] = new Hex[i];
     }
   }
+  
+}
