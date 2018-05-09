@@ -11,48 +11,34 @@ public class Player {
 		cards.add(new ResourceCard(r));
 	}
 	
-	private boolean pay(int wood,int brick,int rock,int sheep,int wheat) {
-		if(fulfils(wood,brick,rock,sheep,wheat)) {
-			remove(wood,brick,rock,sheep,wheat);
+	private boolean pay(int... resources) {
+		if(fulfils(resources)) {
+			remove(resources);
 			return true;
 		}
 		return false;
 	}
-	private boolean fulfils(int w,int b,int r,int s,int wh) {
-		int wood,brick,rock,sheep,wheat;
+	private boolean fulfils(int... resources) {
+		int[] r = new int[resources.length];
+		for(int i = 0;i < r.length;i++) r[i] = 0;
 		for(Card rc:cards) {
 			if(rc.isAResource()) {
-				if(((ResourceCard) rc).isWood()) wood++;
-				if(((ResourceCard) rc).isBrick()) brick++;
-				if(((ResourceCard) rc).isRock()) rock++;
-				if(((ResourceCard) rc).isSheep()) sheep++;
-				if(((ResourceCard) rc).isWheat()) wheat++;
+				for(int i = 0;i < r.length;i++) {
+					if(((ResourceCard) rc).isResource(i)) r[i]++;
+				}
 			}
 		}
-		return wood>=w && brick>=b && rock>=r && sheep>=s && wheat>=wh;
+		for(int i = 0;i < r.length;i++) if(r[i] < resources[i]) return false;
+		return true;
 	}
-	private void remove(int w,int b,int r,int s,int wh) {
+	private void remove(int... r) {
 		for(int i = cards.size()-1;i >= 0;i--) {
 			if(rc.isAResource()) {
-				if(w > 0 && ((ResourceCard) rc).isWood()) {
-					cards.remove(i);
-					w--;
-				}
-				if(b > 0 && ((ResourceCard) rc).isBrick()) {
-					cards.remove(i);
-					b--;
-				}
-				if(r > 0 && ((ResourceCard) rc).isRock()) {
-					cards.remove(i);
-					r--;
-				}
-				if(s > 0 && ((ResourceCard) rc).isSheep()) {
-					cards.remove(i);
-					s--;
-				}
-				if(wh > 0 && ((ResourceCard) rc).isWheat()) {
-					cards.remove(i);
-					wh--;
+				for(int j = 0;j < r.length;j++) {
+					if(r[j] > 0 && ((ResourceCard) rc).isResource(j)) {
+						cards.remove(i);
+						r[j]--;
+					}
 				}
 			}
 		}
