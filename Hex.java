@@ -19,7 +19,12 @@ public class Hex {
 		width = w;
 		height = (int)(2*(width/Math.sqrt(3)));
 		xPoints = new int[] {xLoc, xLoc + width/2, xLoc + width/2, xLoc, xLoc - width/2, xLoc - width/2};
-		yPoints = new int[] {yLoc + height/2, yLoc + height/4, yLoc - height/4, yLoc - height/2, yLoc - height/4, yLoc + height/4};
+		yPoints = new int[] {yLoc + height/2,
+				     yLoc + height/4,
+				     yLoc - height/4,
+				     yLoc - height/2,
+				     yLoc - height/4,
+				     yLoc + height/4};
 	}
 
 	public void draw(Graphics g) {
