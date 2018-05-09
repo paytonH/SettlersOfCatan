@@ -42,4 +42,4 @@ public class Hex {
 		g.fillPolygon(xPoints, yPoints, 6);
 	}
 
-}
+

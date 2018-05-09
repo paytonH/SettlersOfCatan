@@ -1,3 +1,4 @@
+
 import java.awt.Graphics;
 
 public class Board {
@@ -24,4 +25,3 @@ public class Board {
 	}
 
 }
-
