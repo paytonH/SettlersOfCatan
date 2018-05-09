@@ -1,10 +1,7 @@
 
 public class TerrainHex extends Hex {
 
-  //protected Resource.Material resource;
-  //protected Road[] trail;
-  protected Building[] buildings;
-  //protected int trigger;
+  private Building[] buildings;
   
   public TerrainHex(Resource.Material resource,int trigger) {
     super();
