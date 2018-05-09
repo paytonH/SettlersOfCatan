@@ -24,22 +24,21 @@ public class Hex {
 
 	public void draw(Graphics g) {
 		if(type == Resource.Wood) {
-			g.setColor(Color.GREEN);
+			g.setColor(new Color(0,100,0));
 		}
 		if(type == Resource.Brick) {
-			g.setColor(Color.RED);
+			g.setColor(new Color(204,0,0));
 		}
 		if(type == Resource.Sheep) {
-			g.setColor(c);
+			g.setColor(new Color(0,255,0));
 		}
 		if(type == Resource.Wheat) {
-			g.setColor(Color.GREEN);
+			g.setColor(new Color(204,204,0));
 		}
 		if(type == Resource.Rock) {
-			g.setColor(Color.GREEN);
+			g.setColor(new Color(96,96,96));
 		}
-		
 		g.fillPolygon(xPoints, yPoints, 6);
 	}
 
-
+}
